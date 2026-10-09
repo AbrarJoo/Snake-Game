@@ -21,7 +21,7 @@ highScoreElemnet.innerHTML = highScore;
 const cols = Math.floor(board.clientWidth / blockWidth);
 const rows = Math.floor(board.clientHeight / blockHeight);
 let intervalId = null;
-let timerIntervalId=null;
+let timerIntervalId = null;
 
 let food = {
   x: Math.floor(Math.random() * rows),
@@ -42,7 +42,6 @@ for (let row = 0; row < rows; row++) {
     const block = document.createElement("div");
     block.classList.add("block");
     board.appendChild(block);
-    block.innerText = `${row}-${col}`;
     blocks[`${row}-${col}`] = block;
   }
 }
@@ -64,6 +63,7 @@ function render() {
   //wall collosion logic
   if (head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols) {
     clearInterval(intervalId);
+    clearInterval(timerIntervalId);
     modal.style.display = "flex";
     startGameModal.style.display = "none";
     gameOverModal.style.display = "flex";
@@ -106,9 +106,19 @@ startbtn.addEventListener("click", () => {
     render();
   }, 300);
 
-  timerIntervalId=setInterval(()=>{
-    
-  })
+  timerIntervalId = setInterval(() => {
+    let [min, sec] = time.split("-").map(Number);
+
+    if (sec == 59) {
+      min += 1;
+      sec = 0;
+    } else {
+      sec += 1;
+    }
+
+    time = `${min}-${sec}`;
+    timeElement.innerText = time;
+  }, 1000);
 });
 
 restartbtn.addEventListener("click", restartGame);
@@ -143,8 +153,6 @@ function restartGame() {
     render();
   }, 300);
 }
-
-
 
 addEventListener("keydown", (event) => {
   if (event.key == "ArrowUp") {

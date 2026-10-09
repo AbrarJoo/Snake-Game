@@ -106,6 +106,7 @@ section .infos {
   /* width: 30px;
   height: 30px; */
   border: 1px solid var(--border-primary-color);
+  border-radius: 50%;
 }
 
 .fill {
@@ -136,6 +137,6 @@ section .infos {
   gap: var(--space-lg);
 }
 
-.modal .game-over{
+.modal .game-over {
   display: none;
 }
