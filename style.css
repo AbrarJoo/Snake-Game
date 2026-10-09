@@ -13,6 +13,7 @@ body {
 :root {
   /* background colos */
   --bg--primary-color: #141414;
+  --bg--fill-color:#fdfdfc;
 
   /* text colors */
   --text-primary-color: #f0f0f0;
@@ -37,8 +38,7 @@ body {
   --border-radius-xl: 20px;
   --border-radius-2xl: 24px;
 
-  /* Fill color */
-  
+
 }
 
 html {
@@ -99,5 +99,5 @@ section .infos {
 }
 
 .fill{
-  background-color: var();
+  background-color: var(--bg--fill-color);
 }

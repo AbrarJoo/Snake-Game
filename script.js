@@ -20,7 +20,7 @@ const snake = [
     y: 5,
   },
 ];
-
+let direction='left';
 
 for (let row = 0; row < rows; row++) {
   for (let col = 0; col < cols; col++) {
@@ -37,3 +37,10 @@ function render() {
     blocks[`${segment.x}-${segment.y}`].classList.add("fill");
   });
 }
+
+setInterval(()=>{
+
+  const head=snake
+
+  render();
+},300);
